@@ -5,5 +5,5 @@ data/
 pipelines/**/checkpoints/
 pipelines/**/metrics/
 pipelines/**/train.py
-pipelines/utils/preprocess.py
+pipelines/utils/
 
