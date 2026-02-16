@@ -164,29 +164,29 @@ def get_history(pipeline):
 #     val_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
 #     test_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
     
-    def count_errors(keys, error_counts):
-        for key in keys:
-            knees = len(preprocessor.error_knees.get(key, [])) > 0
-            elbows = len(preprocessor.error_elbows.get(key, [])) > 0
-            if knees and elbows:
-                error_counts['knees'] += 1
-                error_counts['elbows'] += 1
-            elif knees:
-                error_counts['knees'] += 1
-            elif elbows:
-                error_counts['elbows'] += 1
-            else:
-                error_counts['none'] += 1
+    # def count_errors(keys, error_counts):
+    #     for key in keys:
+    #         knees = len(preprocessor.error_knees.get(key, [])) > 0
+    #         elbows = len(preprocessor.error_elbows.get(key, [])) > 0
+    #         if knees and elbows:
+    #             error_counts['knees'] += 1
+    #             error_counts['elbows'] += 1
+    #         elif knees:
+    #             error_counts['knees'] += 1
+    #         elif elbows:
+    #             error_counts['elbows'] += 1
+    #         else:
+    #             error_counts['none'] += 1
     
-    count_errors(preprocessor.train_keys, train_error_counts)
-    count_errors(preprocessor.val_keys, val_error_counts)
-    count_errors(preprocessor.test_keys, test_error_counts)
+    # count_errors(preprocessor.train_keys, train_error_counts)
+    # count_errors(preprocessor.val_keys, val_error_counts)
+    # count_errors(preprocessor.test_keys, test_error_counts)
     
-    return jsonify({
-        'train': train_error_counts,
-        'val': val_error_counts,
-        'test': test_error_counts
-    })
+    # return jsonify({
+    #     'train': train_error_counts,
+    #     'val': val_error_counts,
+    #     'test': test_error_counts
+    # })
 
     
 @app.route('/', defaults={'path': ''})
