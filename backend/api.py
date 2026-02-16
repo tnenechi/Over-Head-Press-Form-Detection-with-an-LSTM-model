@@ -6,7 +6,6 @@ from pipelines.custom_feedforward.model import FeedforwardTrainer
 import numpy as np
 from tensorflow.keras.models import load_model
 import os
-import cv2
 import json
 from flask_cors import CORS
 
