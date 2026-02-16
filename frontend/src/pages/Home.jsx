@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="min-h-[50vh] flex flex-col m-4 justify-between">
-      <div className="shadow-md p-3 mb-4 flex items-center gap-4">
+      <div className="shadow-md p-3 mb-4 flex items-center gap-10">
         <Link to="/" className="hover:underline underline-offset-2 transition">
           Home
         </Link>
 
         <a
-          href="https://github.com/tnenechi/Over-Head-Press-Form-Detection-with-an-LSTM-model"
+          href="https://github.com/tnenechi/Over-Head-Press-Form-Detection-with-an-LSTM-model/blob/main/README.md"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline underline-offset-2 transition"

@@ -35,7 +35,7 @@ function Analysis() {
   useEffect(() => {
     const fetchMetrics = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/metrics/combined`);
+        const response = await fetch(`/metrics/combined`);
         if (!response.ok) throw new Error("Failed to fetch metrics");
         const data = await response.json();
         setMetrics(data);
@@ -66,7 +66,7 @@ function Analysis() {
 
   return (
     <div className="container mx-auto p-4 bg-gray-100 text-gray-500 min-h-screen flex flex-col">
-      <div className="shadow-md p-3 mb-4">
+      <div className="shadow-md p-3 mb-4 bg-base-100">
         <Link
           to="/"
           className="text-info hover:underline underline-offset-2 transition"
@@ -75,9 +75,7 @@ function Analysis() {
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold mb-4 text-center">
-        Video Analysis
-      </h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">Video Analysis</h1>
 
       <div className="mb-15 mt-15 relative bg-white p-4 rounded-lg shadow-md max-w-1/4">
         {/* <h2 className="absolute -top-11 ring-1 font-semibold  left-0 bg-gray-300 rounded-full h-10 w-10 flex items-center justify-center">

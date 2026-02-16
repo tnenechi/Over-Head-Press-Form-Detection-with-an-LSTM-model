@@ -25,7 +25,7 @@ ChartJS.register(
   Filler,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 function Dashboard() {
@@ -45,18 +45,14 @@ function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const metricsResponse = await fetch(
-          "http://localhost:5000/metrics/combined"
-        );
+        const metricsResponse = await fetch("/metrics/combined");
         if (!metricsResponse.ok) throw new Error("Failed to fetch metrics");
         const metricsData = await metricsResponse.json();
         setMetrics(metricsData);
         console.log("Metrics data from backend:", metricsData);
 
         const historyPromises = pipelines.map(async (pipeline) => {
-          const response = await fetch(
-            `http://localhost:5000/history/${pipeline}`
-          );
+          const response = await fetch(`/history/${pipeline}`);
           if (!response.ok)
             return {
               [pipeline]: {
@@ -69,7 +65,7 @@ function Dashboard() {
         const historyData = Object.assign({}, ...historyResults);
         setHistory(historyData);
 
-        const statsResponse = await fetch("http://localhost:5000/data_stats");
+        const statsResponse = await fetch("/data_stats");
         if (!statsResponse.ok) throw new Error("Failed to fetch data stats");
         const statsData = await statsResponse.json();
         setDataStats(statsData);
@@ -93,10 +89,10 @@ function Dashboard() {
     labels: Array.from(
       {
         length: Math.max(
-          ...pipelines.map((p) => history[p]?.accuracy?.length || 0)
+          ...pipelines.map((p) => history[p]?.accuracy?.length || 0),
         ),
       },
-      (_, i) => i + 1
+      (_, i) => i + 1,
     ),
     datasets: [
       {
@@ -190,7 +186,7 @@ function Dashboard() {
           !(
             (metrics[selectedPipeline].confusion_matrix?.knees &&
               Array.isArray(
-                metrics[selectedPipeline].confusion_matrix.knees
+                metrics[selectedPipeline].confusion_matrix.knees,
               )) ||
             (metrics[selectedPipeline].confusion_matrix_knees &&
               Array.isArray(metrics[selectedPipeline].confusion_matrix_knees))
@@ -204,7 +200,7 @@ function Dashboard() {
                   x: j,
                   y: i,
                   v: value,
-                }))
+                })),
               ),
         backgroundColor: (ctx) => {
           const value = ctx.raw?.v || 0;
@@ -224,7 +220,7 @@ function Dashboard() {
           !(
             (metrics[selectedPipeline].confusion_matrix?.elbows &&
               Array.isArray(
-                metrics[selectedPipeline].confusion_matrix.elbows
+                metrics[selectedPipeline].confusion_matrix.elbows,
               )) ||
             (metrics[selectedPipeline].confusion_matrix_elbows &&
               Array.isArray(metrics[selectedPipeline].confusion_matrix_elbows))
@@ -238,7 +234,7 @@ function Dashboard() {
                   x: j,
                   y: i,
                   v: value,
-                }))
+                })),
               ),
         backgroundColor: (ctx) => {
           const value = ctx.raw?.v || 0;
@@ -373,7 +369,7 @@ function Dashboard() {
 
   return (
     <div className="container mx-auto p-6 bg-gray-100 text-gray-500 min-h-screen">
-      <div className="shadow-md p-3 mb-4">
+      <div className="shadow-md p-3 mb-4 bg-base-100">
         <Link
           to="/"
           className="text-blue-500 hover:underline underline-offset-2 transition"
@@ -480,11 +476,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.knees
+                          metrics[selectedPipeline].confusion_matrix.knees,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_knees
+                          metrics[selectedPipeline].confusion_matrix_knees,
                         ))
                     )
                       ? "N/A"
@@ -497,11 +493,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.knees
+                          metrics[selectedPipeline].confusion_matrix.knees,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_knees
+                          metrics[selectedPipeline].confusion_matrix_knees,
                         ))
                     )
                       ? "N/A"
@@ -517,11 +513,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.knees
+                          metrics[selectedPipeline].confusion_matrix.knees,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_knees
+                          metrics[selectedPipeline].confusion_matrix_knees,
                         ))
                     )
                       ? "N/A"
@@ -534,11 +530,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.knees
+                          metrics[selectedPipeline].confusion_matrix.knees,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_knees &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_knees
+                          metrics[selectedPipeline].confusion_matrix_knees,
                         ))
                     )
                       ? "N/A"
@@ -576,11 +572,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.elbows
+                          metrics[selectedPipeline].confusion_matrix.elbows,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_elbows
+                          metrics[selectedPipeline].confusion_matrix_elbows,
                         ))
                     )
                       ? "N/A"
@@ -593,11 +589,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.elbows
+                          metrics[selectedPipeline].confusion_matrix.elbows,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_elbows
+                          metrics[selectedPipeline].confusion_matrix_elbows,
                         ))
                     )
                       ? "N/A"
@@ -613,11 +609,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.elbows
+                          metrics[selectedPipeline].confusion_matrix.elbows,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_elbows
+                          metrics[selectedPipeline].confusion_matrix_elbows,
                         ))
                     )
                       ? "N/A"
@@ -630,11 +626,11 @@ function Dashboard() {
                     !(
                       (metrics[selectedPipeline].confusion_matrix?.elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix.elbows
+                          metrics[selectedPipeline].confusion_matrix.elbows,
                         )) ||
                       (metrics[selectedPipeline].confusion_matrix_elbows &&
                         Array.isArray(
-                          metrics[selectedPipeline].confusion_matrix_elbows
+                          metrics[selectedPipeline].confusion_matrix_elbows,
                         ))
                     )
                       ? "N/A"
