@@ -4,8 +4,7 @@ AI-powered overhead press form analysis. Detects incorrect elbow and knee alignm
 
 Advanced AI models analyze video input frame-by-frame, focusing on elbow flare, knee cave, and other common overhead press mistakes.
 
-[Read the full technical report (PDF)](./frontend/public/docs/paper.pdf)
-
+<a href="./frontend/public/docs/paper.pdf" target="_blank">Read the full technical report (PDF)</a>
 
 ## Features
 
