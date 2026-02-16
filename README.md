@@ -6,6 +6,7 @@ Advanced AI models analyze video input frame-by-frame, focusing on elbow flare, 
 
 [Read the full technical report (PDF)](./frontend/public/docs/paper.pdf)
 
+
 ## Features
 
 - Real-time detection of improper elbow and knee positioning during overhead presses
