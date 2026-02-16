@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: synthwave --default --prefersdark;
+}
+
+@layer utilities {
+  .header {
+    font-family: "Excon", sans-serif;
+  }
+}
