@@ -18,7 +18,7 @@ lstm_model_path = "./pipelines/lstm/checkpoints/lstm_model.h5"
 custom_lstm_model_path = "./pipelines/custom_lstm/checkpoints/custom_lstm_model.h5"
 custom_feedforward_model_path = "./pipelines/custom_feedforward/checkpoints/custom_feedforward_model.npz"
 
-preprocessor = Preprocessor(data_dir)
+preprocessor = Preprocessor(data_dir, load_labels=False)
 input_shape = (113, 100)  # Hardcode to match trained model
 
 try:
@@ -158,11 +158,11 @@ def get_history(pipeline):
                     history_dict[key].append(h[key][0] if isinstance(h[key], list) else h[key])
     return jsonify(history_dict)
 
-@app.route('/data_stats', methods=['GET'])
-def get_data_stats():
-    train_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
-    val_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
-    test_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
+# @app.route('/data_stats', methods=['GET'])
+# def get_data_stats():
+#     train_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
+#     val_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
+#     test_error_counts = {'knees': 0, 'elbows': 0, 'none': 0}
     
     def count_errors(keys, error_counts):
         for key in keys:
