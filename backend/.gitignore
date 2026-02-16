@@ -5,5 +5,4 @@ data/
 pipelines/**/checkpoints/
 pipelines/**/metrics/
 pipelines/**/train.py
-utils/
 
